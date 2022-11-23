@@ -1,25 +1,19 @@
-import logo from './logo.svg';
+import react, { useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
+import FoodAndDrink from './components/FoodAndDrink';
+import { Link } from 'react-router-dom';
 
-function App() {
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Link to='/foodAndDrink'>
+      <h1>Food and Drink</h1>
+    </Link>
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+    </>
+  )
 }
-
-export default App;
