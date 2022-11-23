@@ -5,8 +5,10 @@ import "../App.css";
 export default function FoodAndDrink() {
   const [questions, setQuestions] = useState([]);
   let [index, setIndex] = useState(0);
-  let [currentQuestion, setCurrentQuestion] = useState('')
+  let [isDone, setIsDone] = useState(false);
+  const [answers, setAnswers] = useState([])
   const currentQuestions = useRef();
+  const currentAnswers = useRef();
 
   const fetchFoodAndDrink = async () => {
     try {
@@ -25,15 +27,55 @@ export default function FoodAndDrink() {
     fetchFoodAndDrink();
   }, []);
 
-  console.log(questions[index])
-  console.log(index)
+  let questionObject = { ...questions[index] };
+//   let answersArray = [...questionObject.incorrectAnswers, questionObject.correctAnswer] || [];
+
+  const clickHandler = () => {
+    setIndex(index + 1);
+    if (index === questions.length - 1) {
+      setIsDone(!isDone);
+    }
+  };
+
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
+//   console.log(answersArray)
+console.log(questionObject)
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Food n Drink</h1>
+      <h1 className="text-3xl font-bold underline">Food & Drink</h1>
       <h2>
+        Question: {index + 1}/{questions.length}
       </h2>
-      <button type="button" onClick={() => setIndex(index+1)}>Next Question</button>
+      <div>
+
+      <h2>
+        {isDone ? (
+            <span>Done! -- placeholder --</span>
+            ) : (
+                questionObject.question
+                )}
+      {/* <select>
+        {answersArray.map((answer, idx) => {
+            return (
+                <option key={idx}>{answer}</option>
+                )
+            })}
+      </select> */}
+      </h2>
+            </div>
+      {isDone ? (
+        <button type="button" onClick={() => refreshPage()}>
+          Play Again
+        </button>
+      ) : (
+        <button type="button" onClick={() => clickHandler()}>
+          Next Question
+        </button>
+      )}
     </>
   );
 }
