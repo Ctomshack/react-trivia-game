@@ -18,12 +18,12 @@ const Completed = ({ score, incorrect }) => {
   };
 
   return (
-    <div className="center-screen mx-8 flex flex-col justify-center align-middle bg-gray-700 py-16 px-8 lg:mx-28 my-6 rounded-md shadow-lg opacity-80">
+    <div className="center-screen mx-8 flex flex-col justify-center align-middle bg-gray-700 py-4 sm:py-16 px-8 lg:mx-28 my-6 rounded-md shadow-lg opacity-80">
       <div className="mb-12">
-        <h1 className="text-5xl text-white font-bold mb-8 drop-shadow-md">
+        <h1 className="text-2xl sm:text-5xl text-white font-bold sm:mb-8 drop-shadow-md">
           You scored
         </h1>
-        <h2 className="text-9xl text-orange-500 font-extrabold mb-8 drop-shadow-xl">
+        <h2 className="text-6xl sm:text-9xl text-orange-500 font-extrabold sm:mb-8 drop-shadow-xl">
           {calculateScore(score)} %
         </h2>
 
@@ -32,7 +32,7 @@ const Completed = ({ score, incorrect }) => {
       <div className="flex flex-col w-full lg:w-1/2">
         <button
           type="button"
-          className="my-2 text-5xl font-bold hover:shadow-md block text-center w-full lg:w-full justify-center items-center  rounded-md border border-gray-300 bg-white px-6 py-8 text-gray-700 shadow-sm hover:bg-orange-500 hover:text-white  hover:border-orange-500 border-r-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+          className="sm:my-2 md:text-5xl font-bold hover:shadow-md block text-center w-full lg:w-full justify-center items-center  rounded-md border border-gray-300 bg-white px-6 py-2 md:py-8 text-gray-700 shadow-sm hover:bg-orange-500 hover:text-white  hover:border-orange-500 border-r-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
           onClick={() => refreshPage()}
         >
           Play Again
@@ -40,7 +40,7 @@ const Completed = ({ score, incorrect }) => {
         <Link to="/SelectCategory">
           <button
             type="button"
-            className="my-2 text-5xl font-bold hover:shadow-md block text-center w-full lg:w-full justify-center items-center  rounded-md border border-gray-300 bg-white px-6 py-8 text-gray-700 shadow-sm hover:bg-orange-500 hover:text-white  hover:border-orange-500 border-r-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+            className="my-2 md:text-5xl font-bold hover:shadow-md block text-center w-full lg:w-full justify-center items-center  rounded-md border border-gray-300 bg-white px-6 py-2 md:py-8 text-gray-700 shadow-sm hover:bg-orange-500 hover:text-white  hover:border-orange-500 border-r-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
           >
             Select a Category
           </button>
