@@ -1,26 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
-import "../../App.css";
-import arrayShuffle from "array-shuffle";
-import Completed from "../Completed";
+import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import '../../App.css';
+import arrayShuffle from 'array-shuffle';
+import Completed from '../Completed';
 
 export default function FoodAndDrink() {
   const [questions, setQuestions] = useState([]);
   let [index, setIndex] = useState(0);
   let [isDone, setIsDone] = useState(false);
-  // let [answers, setAnswers] = useState([]);
   let [score, setScore] = useState(0);
-  let [selection, setSelection] = useState("");
-  let [showColors, setShowColors] = useState(false);
+  let [selection, setSelection] = useState('');
+  let [incorrect, setIncorrect] = useState([]);
   const currentQuestions = useRef();
   const currentAnswers = useRef();
-
-  // let score = 0
 
   const fetchCategory = async () => {
     try {
       let { data } = await axios.get(
-        "https://the-trivia-api.com/api/questions?categories=food_and_drink&limit=5&difficulty=medium"
+        'https://the-trivia-api.com/api/questions?categories=food_and_drink&limit=5&difficulty=medium'
       );
       currentQuestions.current = data;
       setQuestions(currentQuestions.current);
@@ -72,24 +69,14 @@ export default function FoodAndDrink() {
     e.preventDefault();
     if (selection === questionObject.correctAnswer) {
       incrementScore();
-      // setShowColors(true);
       nextQuestion();
-
-      // setTimeout(() => {
-      //   setShowColors(false);
-      //   nextQuestion();
-      // }, 2000);
     } else {
+      incorrect.push(questionObject);
       nextQuestion();
-      // setShowColors(true);
-      // setTimeout(() => {
-      //   setShowColors(false);
-      //   nextQuestion();
-      // }, 2000);
     }
-    console.log("score", score);
-    console.log("selection", selection);
-    console.log("correct answer", questionObject.correctAnswer);
+    console.log('score', score);
+    console.log('selection', selection);
+    console.log('correct answer', questionObject.correctAnswer);
   };
 
   return (
@@ -131,11 +118,35 @@ export default function FoodAndDrink() {
                   })}
                 </div>
               </form>
+
             </div>
+            <form
+              onSubmit={(e) => {
+                submitHandler(e);
+              }}
+            >
+              <div className="flex flex-col text-2xl font-bold text-center col-start-2 col-span-2">
+                {randomAnswers.map((answer, idx) => {
+                  return (
+                    <button
+                      className="my-2 hover:shadow-md inline-flex text-center w-4/5 lg:w-full  justify-center self-center items-center rounded-3xl border border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-blue-700 hover:text-white  hover:border-blue-600 border-r-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      key={idx}
+                      value={answer}
+                      onClick={(e) => {
+                        changeHandler(e);
+                      }}
+                    >
+                      {answer}
+                    </button>
+                  );
+                })}
+              </div>
+            </form>
           </div>
-        ) : (
-          <Completed score={score} />
-        )}
+        </div>
+      ) : (
+        <Completed score={score} incorrect={incorrect} />
+      )}
     </>
   );
 }
