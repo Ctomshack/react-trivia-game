@@ -4,7 +4,7 @@ import '../../src/index.css'
 
 const Home = () => {
     return (
-        <div className='center-screen flex justify-center align-middle'>
+        <div className='center-screen flex justify-center align-middle lg:mx-24 lg:py-24'>
         <div className='flex flex-col align-center justify-center w-4/5 items-center'>
             <h1 className='text-8xl text-white font-extrabold mb-8 drop-shadow-xl'>Trivia Game</h1>
                     <Link to='/SelectCategory'
