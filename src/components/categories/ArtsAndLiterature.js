@@ -77,7 +77,7 @@ export default function ArtsAndLiterature() {
     <>
         {!isDone ? (
           <div className="center-screen flex-col justify-center align-middle">
-            <h1 className="text-8xl text-white font-extrabold mb-8 drop-shadow-xl">
+            <h1 className="text-6xl md:text-8xl text-white font-extrabold mb-8 drop-shadow-xl">
               {questionObject.category}
             </h1>
             <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 bg-gray-700 py-16 px-8 mx-8 lg:mx-28 my-6 rounded-md shadow-lg opacity-80 min-w-100 max-w-500">
