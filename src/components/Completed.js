@@ -39,6 +39,14 @@ const calculateScore = (total) => {
               Select a Category
             </button>
           </Link>
+          <Link to="/">
+            <button
+              type="button"
+              className="my-2 text-xl font-light  hover:underline block text-center w-full lg:w-full justify-center items-center  text-white shadow-sm "
+            >
+              Quit & return Home
+            </button>
+          </Link>
       </div>
     </div>
   );
