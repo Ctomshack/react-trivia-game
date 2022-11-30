@@ -100,8 +100,8 @@ export default function FoodAndDrink() {
               {questionObject.category}
             </h1>
             {/* <h2 className="text 2xl font-bold text-center">Score: {score}/5</h2> */}
-            <div className="grid grid-cols-2 gap-4 bg-gray-700 py-16 px-8 mx-8 lg:mx-28 my-6 rounded-md shadow-lg opacity-80">
-              <div>
+            <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 bg-gray-700 py-16 px-8 mx-8 lg:mx-28 my-6 rounded-md shadow-lg opacity-80 ">
+              <div className="mb-8">
                 <h2 className="text-4xl text-left mb-4 text-white font-bold">
                   Question {index + 1}/{questions.length}
                 </h2>
@@ -114,7 +114,7 @@ export default function FoodAndDrink() {
                   submitHandler(e);
                 }}
               >
-                <div className="flex flex-col text-2xl font-bold text-center col-start-2 col-span-2">
+                <div className="flex flex-col text-2xl font-bold text-center lg:col-start-2 lg:col-span-2">
                   {randomAnswers.map((answer, idx) => {
                     return (
                       <button
