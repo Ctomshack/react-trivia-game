@@ -38,7 +38,7 @@ const SelectCategory = () => {
                 className='w-full'>
                     <button
                     key={idx}
-                    className="my-2 text-3xl font-medium hover:shadow-md block text-center w-full lg:w-full justify-center items-center rounded-md border border-gray-300 bg-white px-6 py-8 text-gray-700 shadow-sm hover:bg-orange-500 hover:text-white  hover:border-orange-500 border-r-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                    className="my-2 text-3xl font-medium hover:shadow-md block text-center w-full lg:w-full justify-center items-center opacity-80 rounded-md  bg-gray-700 px-6 py-8 text-white shadow-sm hover:bg-orange-500 hover:text-white  hover:border-orange-500  focus:outline-none focus:ring-2 focus:ring-white "
                     >{item.name}</button>
                 </Link>
             )
