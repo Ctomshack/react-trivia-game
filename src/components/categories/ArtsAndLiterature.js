@@ -14,20 +14,35 @@ export default function ArtsAndLiterature() {
   const currentQuestions = useRef();
   const currentAnswers = useRef();
 
-  const fetchCategory = async () => {
-    try {
-      let { data } = await axios.get(
-        'https://the-trivia-api.com/api/questions?categories=arts_and_literature&limit=5&difficulty=medium'
-      );
-      currentQuestions.current = data;
-      setQuestions(currentQuestions.current);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // const fetchCategory = async () => {
+  //   try {
+  //     let { data } = await axios.get(
+  //       'https://the-trivia-api.com/api/questions?categories=arts_and_literature&limit=5&difficulty=medium'
+  //     );
+  //     currentQuestions.current = data;
+  //     setQuestions(currentQuestions.current);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchCategory();
+    // fetchCategory();
+
+    axios('https://the-trivia-api.com/api/questions?categories=arts_and_literature&limit=5&difficulty=medium')
+      .then(response => {
+        setQuestions(response.data)
+      })
+      .catch(error => {
+        console.error('Error fetching data', error);
+        setError(error)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }, []);
 
   let questionObject = { ...questions[index] };
@@ -77,11 +92,11 @@ export default function ArtsAndLiterature() {
     <>
         {!isDone ? (
           <div className="center-screen flex-col justify-center align-middle">
-            <h1 className="text-6xl md:text-8xl text-white font-extrabold mb-8 drop-shadow-xl">
+            <h1 className="text-4xl mt-8 lg:mt-4 lg:mt-auto md:text-6xl text-white font-extrabold mb-4 md:mb-8 drop-shadow-xl">
               {questionObject.category}
             </h1>
-            <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 bg-gray-700 py-16 px-8 mx-8 lg:mx-28 my-6 rounded-md shadow-lg opacity-80 min-w-100 max-w-500">
-              <div className="mb-8">
+            <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 bg-gray-700 py-16 px-8 mx-8 lg:mx-28 my-6 md:min-h-608  lg:h-392 rounded-md shadow-lg opacity-80 w-4/5">
+              <div className="mb-8 h-48 lg:h-48 lg:w-96">
                 <h2 className="text-4xl text-left mb-4 text-white font-bold">
                   Question {index + 1}/{questions.length}
                 </h2>
